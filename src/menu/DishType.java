@@ -1,6 +1,6 @@
 package menu;
 
-enum DishType {
+public enum DishType {
     sideDish,
     mainDish,
     dessert

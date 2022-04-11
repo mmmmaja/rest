@@ -4,9 +4,11 @@ package menu;
 public class MenuItem {
 
     private double price;
-    private String name;
+    private final String name;
 
-    public MenuItem(String name) {}
+    public MenuItem(String name) {
+        this.name = name;
+    }
 
     public void setPrice(double price) {
         this.price = price;
@@ -21,7 +23,7 @@ public class MenuItem {
     }
 
     public String toString() {
-        return this.name + "( "+this.price+" euro )";
+        return this.name + "    ( "+this.price+" euro )";
     }
 
 }

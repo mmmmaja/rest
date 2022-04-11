@@ -9,10 +9,13 @@ import java.util.ArrayList;
  */
 public class Menu {
 
-    private ArrayList<Drink> drinks;
-    private ArrayList<Dish> dishes;
+    private final ArrayList<Drink> drinks;
+    private final ArrayList<Dish> dishes;
 
-    public Menu() {}
+    public Menu() {
+        this.drinks = new ArrayList<>();
+        this.dishes = new ArrayList<>();
+    }
 
 
     public void addDrink(Drink drink) {
@@ -37,30 +40,30 @@ public class Menu {
 
 
     public String toString() {
-        StringBuilder menu = new StringBuilder();
+        StringBuilder menu = new StringBuilder("Menu");
         int counter = 0;
 
-        menu.append("\ndrinks");
+        menu.append("\n\ndrinks");
         for (Drink drink : this.drinks) {
-            menu.append("\n").append(counter++).append(drink);
+            menu.append("\n").append(counter++).append(". ").append(drink);
         }
 
-        menu.append("\nsideDishes");
+        menu.append("\n\nsideDishes");
         ArrayList<Dish> sideDishes = getDishesOfSpecificType(DishType.sideDish);
         for (Dish dish : sideDishes) {
-            menu.append("\n").append(counter++).append(dish);
+            menu.append("\n").append(counter++).append(". ").append(dish);
         }
 
-        menu.append("\nmainDishes");
+        menu.append("\n\nmainDishes");
         ArrayList<Dish> mainDishes = getDishesOfSpecificType(DishType.mainDish);
         for (Dish dish : mainDishes) {
-            menu.append("\n").append(counter++).append(dish);
+            menu.append("\n").append(counter++).append(". ").append(dish);
         }
 
-        menu.append("\ndesserts");
+        menu.append("\n\ndesserts");
         ArrayList<Dish> desserts = getDishesOfSpecificType(DishType.dessert);
         for (Dish dish : desserts) {
-            menu.append("\n").append(counter++).append(dish);
+            menu.append("\n").append(counter++).append(". ").append(dish);
         }
 
         return menu.toString();
