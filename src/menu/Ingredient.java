@@ -26,4 +26,8 @@ public class Ingredient {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Ingredient copyOf() {
+        return new Ingredient(this.price, this.name);
+    }
 }

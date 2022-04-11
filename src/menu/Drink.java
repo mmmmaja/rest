@@ -6,4 +6,9 @@ public class Drink extends MenuItem {
         super(name);
         this.setPrice(price);
     }
+
+    public Drink copyOf() {
+        return new Drink(this.getName(), this.getPrice());
+    }
+
 }

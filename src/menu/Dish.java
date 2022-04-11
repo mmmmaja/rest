@@ -5,15 +5,16 @@ import java.util.ArrayList;
 public class Dish extends MenuItem {
 
     private final ArrayList<Ingredient> ingredients;
-    private final String type;
+    private final DishType dishType;
 
 
-    public Dish(String name, ArrayList<Ingredient> ingredients, String type) {
+    public Dish(String name, ArrayList<Ingredient> ingredients, DishType dishType) {
         super(name);
         this.ingredients = ingredients;
-        this.type = type;
+        this.dishType = dishType;
         computePrice();
     }
+
 
     private void computePrice() {
         double price = 0;
@@ -23,7 +24,17 @@ public class Dish extends MenuItem {
         this.setPrice(price);
     }
 
-    public String getType() {
-        return this.type;
+
+    public DishType getType() {
+        return this.dishType;
+    }
+
+
+    public Dish copyOf() {
+        ArrayList<Ingredient> ingredients = new ArrayList<>();
+        for (Ingredient ingredient : this.ingredients) {
+            ingredients.add(ingredient.copyOf());
+        }
+        return new Dish(this.getName(), ingredients, this.getType());
     }
 }

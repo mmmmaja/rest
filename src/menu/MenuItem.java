@@ -21,7 +21,7 @@ public class MenuItem {
     }
 
     public String toString() {
-        return this.name + "\nprice: "+this.price+"\n";
+        return this.name + "( "+this.price+" euro )";
     }
 
 }
