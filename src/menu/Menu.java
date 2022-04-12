@@ -2,11 +2,6 @@ package menu;
 
 import java.util.ArrayList;
 
-
-/**
- * TODO display content
- * getDrinks(), getSideDishes(), getMainDishes(), getDesserts()
- */
 public class Menu {
 
     private final ArrayList<Drink> drinks;
@@ -15,6 +10,12 @@ public class Menu {
     public Menu() {
         this.drinks = new ArrayList<>();
         this.dishes = new ArrayList<>();
+    }
+
+
+    public Menu(ArrayList<Drink> drinks, ArrayList<Dish> dishes) {
+        this.drinks = drinks;
+        this.dishes = dishes;
     }
 
 
@@ -38,29 +39,53 @@ public class Menu {
         return dishes;
     }
 
+    public ArrayList<Drink> getDrinks() {
+        return this.drinks;
+    }
+
+
+    public ArrayList<Dish> getDishes() {
+        return this.dishes;
+    }
+
+
+    public ArrayList<Dish> getSideDishes() {
+        return getDishesOfSpecificType(DishType.sideDish);
+    }
+
+
+    public ArrayList<Dish> getMainDishes() {
+        return getDishesOfSpecificType(DishType.mainDish);
+    }
+
+
+    public ArrayList<Dish> getDesserts() {
+        return getDishesOfSpecificType(DishType.dessert);
+    }
+
 
     public String toString() {
         StringBuilder menu = new StringBuilder("Menu");
-        int counter = 0;
+        int counter = 1;
 
-        menu.append("\n\ndrinks");
+        menu.append("\n\nDrinks");
         for (Drink drink : this.drinks) {
             menu.append("\n").append(counter++).append(". ").append(drink);
         }
 
-        menu.append("\n\nsideDishes");
+        menu.append("\n\nSide Dishes");
         ArrayList<Dish> sideDishes = getDishesOfSpecificType(DishType.sideDish);
         for (Dish dish : sideDishes) {
             menu.append("\n").append(counter++).append(". ").append(dish);
         }
 
-        menu.append("\n\nmainDishes");
+        menu.append("\n\nMain Dishes");
         ArrayList<Dish> mainDishes = getDishesOfSpecificType(DishType.mainDish);
         for (Dish dish : mainDishes) {
             menu.append("\n").append(counter++).append(". ").append(dish);
         }
 
-        menu.append("\n\ndesserts");
+        menu.append("\n\nDesserts");
         ArrayList<Dish> desserts = getDishesOfSpecificType(DishType.dessert);
         for (Dish dish : desserts) {
             menu.append("\n").append(counter++).append(". ").append(dish);

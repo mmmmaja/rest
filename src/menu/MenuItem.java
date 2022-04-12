@@ -23,7 +23,7 @@ public class MenuItem {
     }
 
     public String toString() {
-        return this.name + "    ( "+this.price+" euro )";
+        return this.name + " (" + this.price + " euros)";
     }
 
 }

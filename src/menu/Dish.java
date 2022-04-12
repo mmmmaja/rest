@@ -19,8 +19,9 @@ public class Dish extends MenuItem {
     private void computePrice() {
         double price = 0;
         for (Ingredient ingredient : this.ingredients) {
-            price+= ingredient.getPrice();
+            price += ingredient.getPrice();
         }
+        // Assuming price = cost without considering mark-ups/other costs
         this.setPrice(price);
     }
 
