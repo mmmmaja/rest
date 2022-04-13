@@ -9,7 +9,6 @@ public class Order {
     
     private final int hour;
     private final OrderOption orderOption;
-    private final Restaurant restaurant;
     private final ArrayList<MenuItem> orders;
     private final Menu currentMenu;
 
@@ -22,7 +21,6 @@ public class Order {
     public Order(int hour, Restaurant restaurant, OrderOption orderOption) {
         this.hour = hour;
         this.orderOption = orderOption;
-        this.restaurant = restaurant;
         this.orders = new ArrayList<>();
         this.currentMenu = restaurant.getCurrentMenu(this);
     }
@@ -35,12 +33,7 @@ public class Order {
         return hour;
     }
 
-    // Only possible to add to order if menuItem is the name of an item on the menu of the corresponding restaurant given in the constructor
     public void addToOrder(MenuItem menuItem) {
-        boolean validItem = false;
-
-        if(!validItem)
-            return;
         orders.add(menuItem);
     }
 
