@@ -10,7 +10,7 @@ public class Order {
     private final int hour;
     private final OrderOption orderOption;
     private final Restaurant restaurant;
-    private final ArrayList<MenuItem> menuItems;
+    private final ArrayList<MenuItem> orders;
     private final Menu currentMenu;
 
     /**
@@ -23,33 +23,38 @@ public class Order {
         this.hour = hour;
         this.orderOption = orderOption;
         this.restaurant = restaurant;
-        this.menuItems = new ArrayList<>();
+        this.orders = new ArrayList<>();
         this.currentMenu = restaurant.getCurrentMenu(this);
     }
-
 
     public OrderOption getOrderOption() {
         return this.orderOption;
     }
 
-
     public int getHour() {
         return hour;
     }
 
-
+    // Only possible to add to order if menuItem is the name of an item on the menu of the corresponding restaurant given in the constructor
     public void addToOrder(MenuItem menuItem) {
-        menuItems.add(menuItem);
+        boolean validItem = false;
+
+        if(!validItem)
+            return;
+        orders.add(menuItem);
     }
 
-
     public ArrayList<MenuItem> getMenuItems() {
-        return this.menuItems;
+        return this.orders;
+    }
+
+    public Menu getCurrentMenu() {
+        return this.currentMenu;
     }
 
     public double getTotalPrice() {
         double total = 0;
-        for (MenuItem menuItem : menuItems) {
+        for (MenuItem menuItem : orders) {
             total += menuItem.getPrice();
         }
         return total;
