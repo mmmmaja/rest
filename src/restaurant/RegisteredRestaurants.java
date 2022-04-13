@@ -1,6 +1,6 @@
 package restaurant;
 
-public enum RegisteredRests {
+public enum RegisteredRestaurants {
     A,
     B,
     C

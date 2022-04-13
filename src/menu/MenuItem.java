@@ -1,6 +1,8 @@
 package menu;
 
-
+/**
+ * TODO recalculate price based on the happy hours etc.
+ */
 public class MenuItem {
 
     private double price;

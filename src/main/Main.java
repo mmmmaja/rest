@@ -1,10 +1,15 @@
 package main;
 
 import menu.*;
+import order.OrderOption;
 import restaurant.*;
 
 import java.util.ArrayList;
 
+
+/**
+ * TODO abstract class with method to recalculate each product??
+ */
 public class Main {
 
     public static void main(String[] args) {
@@ -38,9 +43,9 @@ public class Main {
         menu.addDrink(d3);
 
         // Adding new restaurant w/ menu
-        Restaurant restaurant = new Restaurant(RegisteredRests.A, menu);
+        Restaurant restaurant = new Restaurant(RegisteredRestaurants.A, menu);
         // Creating order scenario: dine-in at 10:00
-        Order order = new Order(10, true, restaurant);
+        Order order = new Order(10, restaurant, OrderOption.dineInInPersonOrder);
         // Returns current menu prices of restaurant A
         Menu menuA = restaurant.getCurrentMenu(order);
 
@@ -51,7 +56,7 @@ public class Main {
         order.addToOrder(menuA.getDesserts().get(0));
         order.addToOrder(menuA.getSideDishes().get(0));
 
-        System.out.println(order.getOrder());
-        System.out.println(order.getTotal());
+        System.out.println(order.getMenuItems());
+        System.out.println(order.getTotalPrice());
     }
 }

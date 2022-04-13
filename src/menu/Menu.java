@@ -39,6 +39,7 @@ public class Menu {
         return dishes;
     }
 
+
     public ArrayList<Drink> getDrinks() {
         return this.drinks;
     }
@@ -95,6 +96,7 @@ public class Menu {
     }
 
 
+
     public Menu copyOf() {
         Menu menu = new Menu();
         for (Drink drink : this.drinks) {
@@ -105,6 +107,5 @@ public class Menu {
         }
         return menu;
     }
-
 
 }

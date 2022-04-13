@@ -1,29 +1,30 @@
 package main;
 
+import order.OrderOption;
 import restaurant.*;
 import java.util.ArrayList;
 import menu.*;
 
 public class Order {
     
-    private int hour;
-    private boolean dineIn;
-    private Restaurant restaurant;
-    private ArrayList<MenuItem> order;
-    private Menu currentMenu;
+    private final int hour;
+    private final OrderOption orderOption;
+    private final Restaurant restaurant;
+    private final ArrayList<MenuItem> menuItems;
+    private final Menu currentMenu;
 
 
-    public Order(int hour, boolean dineIn, Restaurant restaurant) {
+    public Order(int hour, Restaurant restaurant, OrderOption orderOption) {
         this.hour = hour;
-        this.dineIn = dineIn;
+        this.orderOption = orderOption;
         this.restaurant = restaurant;
-        order = new ArrayList<MenuItem>();
-        currentMenu = restaurant.getCurrentMenu(this);
+        this.menuItems = new ArrayList<>();
+        this.currentMenu = restaurant.getCurrentMenu(this);
     }
 
 
-    public boolean getDiningStatus() {
-        return this.dineIn;
+    public OrderOption getOrderOption() {
+        return this.orderOption;
     }
 
 
@@ -33,17 +34,17 @@ public class Order {
 
 
     public void addToOrder(MenuItem menuItem) {
-        order.add(menuItem);
+        menuItems.add(menuItem);
     }
 
 
-    public ArrayList<MenuItem> getOrder() {
-        return this.order;
+    public ArrayList<MenuItem> getMenuItems() {
+        return this.menuItems;
     }
 
-    public double getTotal() {
+    public double getTotalPrice() {
         double total = 0;
-        for(MenuItem menuItem : order) {
+        for (MenuItem menuItem : menuItems) {
             total += menuItem.getPrice();
         }
         return total;
