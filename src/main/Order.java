@@ -13,7 +13,12 @@ public class Order {
     private final ArrayList<MenuItem> menuItems;
     private final Menu currentMenu;
 
-
+    /**
+     * Order that customer places
+     * @param hour Time (integer hour) that customer places order
+     * @param restaurant At which restaurant order is placed
+     * @param orderOption Type of order (see enum OrderOption)
+     */
     public Order(int hour, Restaurant restaurant, OrderOption orderOption) {
         this.hour = hour;
         this.orderOption = orderOption;

@@ -3,17 +3,12 @@ package main;
 import menu.*;
 import order.OrderOption;
 import restaurant.*;
-
 import java.util.ArrayList;
 
-
-/**
- * TODO abstract class with method to recalculate each product??
- */
 public class Main {
-
+    // Testing
     public static void main(String[] args) {
-
+        // Creating menu with drinks and dishes, all instances of the latter containing ingredients with a cost
         Menu menu = new Menu();
 
         Ingredient milk = new Ingredient(1.0, "milk");
@@ -42,20 +37,23 @@ public class Main {
         menu.addDrink(d2);
         menu.addDrink(d3);
 
-        // Adding new restaurant w/ menu
-        Restaurant restaurant = new Restaurant(RegisteredRestaurants.A, menu);
+        // Adding a new restaurant with menu
+        // This new restaurant is in a list of registered restaurants (e.g., the restaurant shows up on the Thuisbezorgd website)
+        // Extra feature for websites where multiple restaurants are listed (and customers can view their respective menus)
+        Restaurant restaurantA = new Restaurant(RegisteredRestaurants.A, menu);
+
         // Creating order scenario: dine-in at 10:00
-        Order order = new Order(10, restaurant, OrderOption.dineInInPersonOrder);
-        // Returns current menu prices of restaurant A
-        Menu menuA = restaurant.getCurrentMenu(order);
+        Order order = new Order(10, restaurantA, OrderOption.dineInInPersonOrder);
 
-        // Dish pasta = new Dish("pasta", soupIngredients, DishType.mainDish);
-        // order.addToOrder(pasta); // Throw exception
+        // Returns current menu prices of restaurant A (may vary depending on their registered conditions, e.g., dining in is more expensive, having a discount between certain hours, etc.)
+        Menu menuA = restaurantA.getCurrentMenu(order);
 
-        // TODO: Need to make sure only "valid" items are added (i.e., present on restaurant's menu)
+        // GUI should ensure that only valid items are displayed 
+        // I.e., impossible to order a dish from Restaurant B through Restaurant A; GUI should only show the items present on menuA
         order.addToOrder(menuA.getDesserts().get(0));
         order.addToOrder(menuA.getSideDishes().get(0));
 
+        // Outprints correct ordered menu items & total cost
         System.out.println(order.getMenuItems());
         System.out.println(order.getTotalPrice());
     }
