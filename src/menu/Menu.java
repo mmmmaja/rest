@@ -2,6 +2,9 @@ package menu;
 
 import java.util.ArrayList;
 
+/**
+ * class that represents the menu of the restaurant
+ */
 public class Menu {
 
     private final ArrayList<Drink> drinks;
@@ -12,23 +15,34 @@ public class Menu {
         this.dishes = new ArrayList<>();
     }
 
-
+    /**
+     * @param drinks list of all the drinks in the menu
+     * @param dishes list of all the dishes in the menu
+     */
     public Menu(ArrayList<Drink> drinks, ArrayList<Dish> dishes) {
         this.drinks = drinks;
         this.dishes = dishes;
     }
 
-
+    /**
+     * @param drink to be added to the list of drinks
+     */
     public void addDrink(Drink drink) {
         this.drinks.add(drink);
     }
 
-
+    /**
+     * @param dish to be added to the list of dishes
+     */
     public void addDish(Dish dish) {
         this.dishes.add(dish);
     }
 
-
+    /**
+     *
+     * @param dishType specific type of dish (see enum options for DishType)
+     * @return list of Dish objects of given type
+     */
     private ArrayList<Dish> getDishesOfSpecificType(DishType dishType) {
         ArrayList<Dish> dishes = new ArrayList<>();
         for (Dish dish : this.dishes) {

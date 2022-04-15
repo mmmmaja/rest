@@ -2,7 +2,7 @@ package restaurant;
 
 import menu.*;
 import java.util.ArrayList;
-import main.Order;
+import order.Order;
 import order.OrderOption;
 
 public class Restaurant {

@@ -1,7 +1,7 @@
 package menu;
 
 /**
- * TODO recalculate price based on the happy hours etc.
+ * parent class for drinks and dishes
  */
 public class MenuItem {
 
