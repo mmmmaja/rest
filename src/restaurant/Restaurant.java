@@ -6,24 +6,17 @@ import order.Order;
 import order.OrderOption;
 
 public class Restaurant {
-
     private final RegisteredRestaurants restaurantName;
     private final Menu menu;
     private double priceMultiplier = 1;
     private boolean happyHour = false; // TODO: Implementation
-
 
     public Restaurant(RegisteredRestaurants restaurantName, Menu menu) {
         this.restaurantName = restaurantName;
         this.menu = menu;
     }
 
-
-    public Menu getMenu() {
-        return this.menu;
-    }
-
-
+    // Returns current menu depending on the time & whether the order is dined in (OrderOption)
     public Menu getCurrentMenu(Order order) {
         switch(restaurantName) {
             // Custom price calculations for each restaurant
@@ -48,16 +41,14 @@ public class Restaurant {
                 break;
         }
 
-
         ArrayList<Drink> drinks = this.menu.copyOf().getDrinks(); // All drinks
         for (Drink drink : drinks) {
-            drink.setPrice(drink.getPrice() * priceMultiplier);
+            drink.setPrice(drink.getPrice() * priceMultiplier); // Changes price by multiplier
         }
-
 
         ArrayList<Dish> dishes = this.menu.copyOf().getDishes(); // All dishes
         for (Dish dish : dishes) {
-            dish.setPrice(dish.getPrice() * priceMultiplier);
+            dish.setPrice(dish.getPrice() * priceMultiplier); // Changes price by multiplier
         }
 
         return new Menu(drinks, dishes);
