@@ -16,27 +16,33 @@ public class Menu {
     }
 
     /**
-     * 
-     * @param menuItems
+     * Create menu with list of menu items in the constructor
+     * @param menuItems in menu
      */
     public Menu(ArrayList<MenuItem> menuItems) {
         this.menuItems = menuItems;
     }
 
-
+    /**
+     * Add menu item
+     * @param menuItem
+     */
     public void addMenuItem(MenuItem menuItem) {
         this.menuItems.add(menuItem);
     }
 
+    /**
+     * Get list of menu items
+     * @return
+     */
     public ArrayList<MenuItem> getMenuItem() {
         return this.menuItems;
     }
 
-
     /**
-     *
-     * @param dishType specific type of dish (see enum options for DishType)
-     * @return list of Dish objects of given type
+     * Returns list of menu items of a specific dish type
+     * @param dishType Specific type of dish (see public enum DishType)
+     * @return List of Dish objects of given type
      */
     private ArrayList<Dish> getDishesOfSpecificType(DishType dishType) {
         ArrayList<Dish> dishes = new ArrayList<>();
@@ -50,22 +56,33 @@ public class Menu {
         return dishes;
     }
 
-
+    /**
+     * Gets list of side dishes
+     * @return List of side dishes
+     */
     public ArrayList<Dish> getSideDishes() {
         return getDishesOfSpecificType(DishType.sideDish);
     }
 
-
+    /**
+     * Gets list of main dishes
+     * @return List of main dishes
+     */
     public ArrayList<Dish> getMainDishes() {
         return getDishesOfSpecificType(DishType.mainDish);
     }
 
-
+    /**
+     * Gets list of desserts
+     * @return List of desserts
+     */
     public ArrayList<Dish> getDesserts() {
         return getDishesOfSpecificType(DishType.dessert);
     }
 
-
+    /**
+     * Returns contents of menu
+     */
     public String toString() {
         StringBuilder menu = new StringBuilder("Menu");
         int counter = 1;
@@ -76,8 +93,6 @@ public class Menu {
                 menu.append("\n").append(counter++).append(". ").append(menuItem);
             }
         }
-
-
 
         menu.append("\n\nSide Dishes");
         ArrayList<Dish> sideDishes = getDishesOfSpecificType(DishType.sideDish);
@@ -100,8 +115,10 @@ public class Menu {
         return menu.toString();
     }
 
-
-
+    /**
+     * Creates copy of the menu
+     * @return menu
+     */
     public Menu copyOf() {
         Menu menu = new Menu();
         for (MenuItem menuItem : this.menuItems) {
@@ -114,5 +131,4 @@ public class Menu {
         }
         return menu;
     }
-
 }

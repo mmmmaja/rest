@@ -4,18 +4,15 @@ import restaurant.*;
 import java.util.ArrayList;
 import menu.*;
 
-
 /**
- * class having all the information about the order
+ * Class having all the information about the order
  */
 public class Order {
-
     private final int time;
     private final OrderOption orderOption;
     private final ArrayList<MenuItem> menuItems;
     private final Menu currentMenu;
     private boolean paid;
-
 
     /**
      * Order that customer places
@@ -31,9 +28,8 @@ public class Order {
         this.paid = false;
     }
 
-
     /**
-     * add the menuItem to the current order
+     * Adds the menuItem to the current order
      * @param menuItemName name of the item
      */
     public void addToOrder(String menuItemName) {
@@ -45,21 +41,21 @@ public class Order {
     }
 
     /**
-     * @return all the items that this order includes
+     * @return All the items that this order includes
      */
     public ArrayList<MenuItem> getMenuItems() {
         return this.menuItems;
     }
 
     /**
-     * @return menu with updated prices based on the special offers and happy hours
+     * @return Menu with updated prices based on the special offers and happy hour discounts
      */
     public Menu getCurrentMenu() {
         return this.currentMenu;
     }
 
     /**
-     * @return total price of the order including special offers and happy hours
+     * @returnTtotal Price of the order including special offers and happy hours
      */
     public double getTotalPrice() {
         double total = 0;
@@ -70,30 +66,38 @@ public class Order {
     }
 
     /**
-     * asks the customer to make the payment
-     * method to be implemented
-     * should update the global boolean paid
+     * Asks the customer to make the payment
+     * Method to be implemented by the restaurant
+     * Should update the global boolean paid
      */
-    public void requestPayment() {}
+    public void requestPayment() {
+        // TODO
+    }
 
     /**
-     * @return true if payment for the order was registered
+     * @return True if payment for the order was registered
      */
     public boolean getPaid() {
         return this.paid;
     }
 
     /**
-     * @return true if order was processed successfully order needs to be delivered
+     * @return True if order was processed successfully and order needs to be delivered
      */
     public boolean requiresDelivery() {
         return this.orderOption.equals(OrderOption.homeDelivery) && this.paid;
     }
 
+    /**
+     * @return OrderOption (see enum OrderOption)
+     */
     public OrderOption getOrderOption() {
         return this.orderOption;
     }
 
+    /**
+     * @return Time of order
+     */
     public int getTime() {
         return this.time;
     }

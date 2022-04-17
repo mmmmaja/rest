@@ -1,33 +1,40 @@
 package restaurant;
 
 /**
- * class representing an employee that delivers the food order in the restaurant
- * we assumed that each deliverer works for the specific restaurant
+ * Class representing an employee that delivers the food order in the restaurant
+ * Based on the assumption that each deliverer works for the specific restaurant (i.e., separate from deliverers of an external ordering website)
  */
 public class Deliverer {
-
     private final String delivererID;
-
-    // when deliverer is working and can't deliver order at the moment boolean busy is set to true
-    // once delivery is done busy boolean is set back to false
+    // When deliverer is working and cannot deliver order at the moment boolean busy is set to true
+    // Once delivery is done, boolean busy is set back to false
     private boolean busy;
 
     /**
-     * @param delivererID unique String representing the deliverer
+     * @param delivererID Unique String representing the deliverer
      */
     public Deliverer(String delivererID) {
         this.delivererID = delivererID;
         this.busy = false;
     }
 
+    /**
+     * @return True if deliverer is unavailable, false if deliverer can make a delivery
+     */
     public boolean getBusy() {
         return this.busy;
     }
 
+    /**
+     * @param busy Status of deliverer
+     */
     public void setBusy(boolean busy) {
         this.busy = busy;
     }
 
+    /**
+     * Shows status of specific deliverer
+     */
     public String toString() {
         return "ID: " + delivererID;
     }
