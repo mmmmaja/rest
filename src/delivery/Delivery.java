@@ -2,25 +2,26 @@ package delivery;
 
 import order.Order;
 
+import java.util.ArrayList;
+
 /**
  * this class is responsible for handling the delivery of given order
  * has information about the employee that will deliver the order
  */
-public record Delivery(Deliverer deliverer, Order order) {
+public class Delivery {
 
-    public Delivery(Deliverer deliverer, Order order) {
-        this.deliverer = deliverer;
-        this.order = order;
+    private final ArrayList<Deliverer> deliverers;
 
-        this.deliverer.setBusy(true);
-        deliver();
-        this.deliverer.setBusy(false);
-
-        System.out.println("this order was delivered");
+    public Delivery(ArrayList<Deliverer> deliverers) {
+        this.deliverers = deliverers;
     }
 
-    private void deliver() {
-
+    public void deliver(Order order) {
+        for (Deliverer deliverer : this.deliverers) {
+            if (!deliverer.getBusy()) {
+                // deliver the order
+            }
+        }
     }
 
 }

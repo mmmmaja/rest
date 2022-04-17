@@ -16,6 +16,7 @@ public class Order {
     private final ArrayList<MenuItem> orders;
     private final Menu currentMenu;
     private boolean paid;
+    private boolean toBeDelivered;
 
     /**
      * Order that customer places
@@ -91,6 +92,22 @@ public class Order {
      */
     public boolean getPaid() {
         return this.paid;
+    }
+
+    /**
+     * @return true if order was processed successfully and delivery was registered
+     * and false if order was denied
+     */
+    public boolean toBeDelivered() {
+
+        // payment for the order was not registered and order will be denied
+        if (!this.paid) {
+            return false;
+        }
+
+        // if delivery is required
+        return this.orderOption.equals(OrderOption.APIOrder) ||
+                this.orderOption.equals(OrderOption.homeDelivery);
     }
 
 }

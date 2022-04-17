@@ -1,7 +1,7 @@
 package main;
 
 import delivery.Deliverer;
-import order.OrderProcessing;
+import delivery.Delivery;
 import menu.*;
 import order.Order;
 import order.OrderOption;
@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) {
 
         Menu menu = createMenu();
-        OrderProcessing orderProcessing = new OrderProcessing(createDeliverers());
+        Delivery delivery =  new Delivery(createDeliverers());
 
         // Adding new restaurant with menu
         Restaurant restaurant = new Restaurant(RegisteredRestaurants.A, menu);
@@ -27,13 +27,8 @@ public class Main {
         order.addToOrder("cake");
         order.addToOrder("drink1");
         order.requestPayment();
-
-
-        if (orderProcessing.processOrder(order)) {
-            System.out.println("order was successfully processed");
-        }
-        else {
-            System.out.println("order denied");
+        if (order.toBeDelivered()) {
+            delivery.deliver(order);
         }
 
 
