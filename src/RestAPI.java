@@ -1,9 +1,6 @@
-package restaurant;
-
 import menu.Menu;
-import order.Order;
-import order.OrderOption;
-
+import order.*;
+import restaurant.Restaurant;
 
 public class RestAPI {
 

@@ -1,4 +1,4 @@
-package delivery;
+package restaurant;
 
 /**
  * class representing an employee that delivers the food order in the restaurant

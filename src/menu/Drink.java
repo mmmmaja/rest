@@ -12,7 +12,7 @@ public class Drink extends MenuItem {
     }
 
     /**
-     * @return copy of the current object
+     * @return Copy of the current object
      */
     public Drink copyOf() {
         return new Drink(this.getName(), this.getPrice());

@@ -1,6 +1,5 @@
 package restaurant;
 
-import delivery.Deliverer;
 import menu.*;
 import java.util.ArrayList;
 

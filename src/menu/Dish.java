@@ -10,8 +10,8 @@ public class Dish extends MenuItem {
     /**
      *
      * @param name of the dish
-     * @param ingredients list of all the ingredients that the dish consists of
-     * @param dishType type of the dish (see DishType enum options)
+     * @param ingredients List of all the ingredients in the dish
+     * @param dishType Type of the dish (see public enum DishType)
      */
     public Dish(String name, ArrayList<Ingredient> ingredients, DishType dishType) {
         super(name);
@@ -21,7 +21,7 @@ public class Dish extends MenuItem {
     }
 
     /**
-     * compute the price of the current dish based on the list of the ingredients and their prices
+     * Compute the price of the current dish based on the list of the ingredients and their prices
      */
     private void computePrice() {
         double price = 0;
@@ -34,14 +34,14 @@ public class Dish extends MenuItem {
 
     /**
      *
-     * @return type of the dish (see DishType enum options)
+     * @return Type of the dish (see DishType enum options)
      */
     public DishType getType() {
         return this.dishType;
     }
 
     /**
-     * @return copy of the current object
+     * @return Copy of the current object
      */
     public Dish copyOf() {
         ArrayList<Ingredient> ingredients = new ArrayList<>();

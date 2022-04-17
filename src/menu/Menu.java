@@ -3,18 +3,22 @@ package menu;
 import java.util.ArrayList;
 
 /**
- * class that represents the menu of the restaurant
+ * Class that represents the menu of the restaurant
  */
 public class Menu {
-
     private final ArrayList<MenuItem> menuItems;
 
-
+    /**
+     * Creates empty menu (ArrayList)
+     */
     public Menu() {
         this.menuItems = new ArrayList<>();
     }
 
-
+    /**
+     * 
+     * @param menuItems
+     */
     public Menu(ArrayList<MenuItem> menuItems) {
         this.menuItems = menuItems;
     }
