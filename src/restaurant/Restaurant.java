@@ -41,17 +41,12 @@ public class Restaurant {
                 break;
         }
 
-        ArrayList<Drink> drinks = this.menu.copyOf().getDrinks(); // All drinks
-        for (Drink drink : drinks) {
-            drink.setPrice(drink.getPrice() * priceMultiplier); // Changes price by multiplier
+        ArrayList<MenuItem> menuItems = this.menu.copyOf().getMenuItem(); // All drinks
+        for (MenuItem menuItem : menuItems) {
+            menuItem.setPrice(menuItem.getPrice() * priceMultiplier); // Changes price by multiplier
         }
 
-        ArrayList<Dish> dishes = this.menu.copyOf().getDishes(); // All dishes
-        for (Dish dish : dishes) {
-            dish.setPrice(dish.getPrice() * priceMultiplier); // Changes price by multiplier
-        }
-
-        return new Menu(drinks, dishes);
+        return new Menu(menuItems);
     }
 
     public boolean getHappyHour() {

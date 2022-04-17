@@ -7,36 +7,27 @@ import java.util.ArrayList;
  */
 public class Menu {
 
-    private final ArrayList<Drink> drinks;
-    private final ArrayList<Dish> dishes;
+    private final ArrayList<MenuItem> menuItems;
+
 
     public Menu() {
-        this.drinks = new ArrayList<>();
-        this.dishes = new ArrayList<>();
+        this.menuItems = new ArrayList<>();
     }
 
-    /**
-     * @param drinks list of all the drinks in the menu
-     * @param dishes list of all the dishes in the menu
-     */
-    public Menu(ArrayList<Drink> drinks, ArrayList<Dish> dishes) {
-        this.drinks = drinks;
-        this.dishes = dishes;
+
+    public Menu(ArrayList<MenuItem> menuItems) {
+        this.menuItems = menuItems;
     }
 
-    /**
-     * @param drink to be added to the list of drinks
-     */
-    public void addDrink(Drink drink) {
-        this.drinks.add(drink);
+
+    public void addMenuItem(MenuItem menuItem) {
+        this.menuItems.add(menuItem);
     }
 
-    /**
-     * @param dish to be added to the list of dishes
-     */
-    public void addDish(Dish dish) {
-        this.dishes.add(dish);
+    public ArrayList<MenuItem> getMenuItem() {
+        return this.menuItems;
     }
+
 
     /**
      *
@@ -45,22 +36,14 @@ public class Menu {
      */
     private ArrayList<Dish> getDishesOfSpecificType(DishType dishType) {
         ArrayList<Dish> dishes = new ArrayList<>();
-        for (Dish dish : this.dishes) {
-            if (dish.getType().equals(dishType)) {
-                dishes.add(dish);
+        for (MenuItem menuItem : this.menuItems) {
+            if (menuItem instanceof Dish) {
+                if (((Dish) menuItem).getType().equals(dishType)) {
+                    dishes.add((Dish) menuItem);
+                }
             }
         }
         return dishes;
-    }
-
-
-    public ArrayList<Drink> getDrinks() {
-        return this.drinks;
-    }
-
-
-    public ArrayList<Dish> getDishes() {
-        return this.dishes;
     }
 
 
@@ -84,9 +67,13 @@ public class Menu {
         int counter = 1;
 
         menu.append("\n\nDrinks");
-        for (Drink drink : this.drinks) {
-            menu.append("\n").append(counter++).append(". ").append(drink);
+        for (MenuItem menuItem : this.menuItems) {
+            if (menuItem instanceof Drink) {
+                menu.append("\n").append(counter++).append(". ").append(menuItem);
+            }
         }
+
+
 
         menu.append("\n\nSide Dishes");
         ArrayList<Dish> sideDishes = getDishesOfSpecificType(DishType.sideDish);
@@ -113,11 +100,13 @@ public class Menu {
 
     public Menu copyOf() {
         Menu menu = new Menu();
-        for (Drink drink : this.drinks) {
-            menu.addDrink(drink.copyOf());
-        }
-        for (Dish dish : this.dishes) {
-            menu.addDish(dish.copyOf());
+        for (MenuItem menuItem : this.menuItems) {
+            if (menuItem instanceof Drink) {
+                menu.addMenuItem((Drink) menuItem);
+            }
+            else {
+                menu.addMenuItem((Dish) menuItem);
+            }
         }
         return menu;
     }

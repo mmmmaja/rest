@@ -1,7 +1,7 @@
-package delivery;
+package order;
 
-import order.Order;
-import order.OrderOption;
+import delivery.Deliverer;
+import delivery.Delivery;
 import java.util.ArrayList;
 
 /**

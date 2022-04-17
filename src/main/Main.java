@@ -1,7 +1,7 @@
 package main;
 
 import delivery.Deliverer;
-import delivery.OrderProcessing;
+import order.OrderProcessing;
 import menu.*;
 import order.Order;
 import order.OrderOption;
@@ -66,11 +66,11 @@ public class Main {
         Dish cake = new Dish("cake", cakeIngredients, DishType.dessert);
         Dish soup = new Dish("soup", soupIngredients, DishType.sideDish);
 
-        menu.addDish(cake);
-        menu.addDish(soup);
-        menu.addDrink(d1);
-        menu.addDrink(d2);
-        menu.addDrink(d3);
+        menu.addMenuItem(cake);
+        menu.addMenuItem(soup);
+        menu.addMenuItem(d1);
+        menu.addMenuItem(d2);
+        menu.addMenuItem(d3);
 
         return menu;
     }

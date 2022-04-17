@@ -46,14 +46,9 @@ public class Order {
      * @param menuItemName name of the item
      */
     public void addToOrder(String menuItemName) {
-        for (Dish dish : this.currentMenu.getDishes()) {
-            if (dish.getName().equals(menuItemName)) {
-                orders.add(dish);
-            }
-        }
-        for (Drink drink : this.currentMenu.getDrinks()) {
-            if (drink.getName().equals(menuItemName)) {
-                orders.add(drink);
+        for (MenuItem menuItem : this.currentMenu.getMenuItem()) {
+            if (menuItem.getName().equals(menuItemName)) {
+                orders.add(menuItem);
             }
         }
     }
