@@ -1,5 +1,4 @@
 import menu.Menu;
-import menu.MenuItem;
 import order.*;
 import restaurant.Restaurant;
 
@@ -26,16 +25,16 @@ public class RestAPI {
     }
 
     /**
-     * @param menuItem Adds menuItem to order
+     * @param menuItemName Adds menu item to order
      */
-    public void addToOrder(MenuItem menuItem) {
-        this.order.addToOrder(menuItem);
+    public void addToOrder(MenuItem menuItemName) {
+        this.order.addToOrder(menuItemName);
     }
 
     /**
-     * @return Completed order ()
-     * order; the rest (i.e., payment details and delivery depends
-     * on implementation of external company)
+     * @return Completed order (i.e., order has been completed and can be relayed back to external ordering website for processing)
+     * Assumes that, upon returning the complete order, the rest of the procedure (payment and delivery) depends on the implementation of the external company
+     * Procedure without an external company (and solely via the restaurant) is done via Order.java
      */
     public Order completeOrder() {
         return this.order;
