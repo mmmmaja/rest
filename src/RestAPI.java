@@ -1,6 +1,7 @@
-import menu.Menu;
+
+import menu.*;
 import order.*;
-import restaurant.Restaurant;
+import restaurant.*;
 
 public class RestAPI {
     private final Restaurant restaurant;
@@ -21,7 +22,7 @@ public class RestAPI {
      * @return Current menu of the given restaurant based on the time (to account for discounts at certain hours)
      */
     public Menu getCurrentMenu() {
-        return this.restaurant.getCurrentMenu(this.time);
+        return this.restaurant.getCurrentMenu(this.time, false);
     }
 
     /**

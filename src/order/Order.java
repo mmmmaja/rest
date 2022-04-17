@@ -25,7 +25,7 @@ public class Order {
         this.time = time;
         this.orderOption = orderOption;
         this.menuItems = new ArrayList<>();
-        if(orderOption == OrderOption.dineInInPersonOrder || orderOption = OrderOption.dineInOnlineOrder)
+        if(orderOption == OrderOption.dineInInPersonOrder || orderOption == OrderOption.dineInOnlineOrder)
             dineIn = true;
         else
             dineIn = false;
@@ -73,6 +73,7 @@ public class Order {
      */
     public void requestPayment() {
         // TODO
+        this.paid = true;
     }
 
     /**

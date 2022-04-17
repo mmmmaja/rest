@@ -4,14 +4,14 @@ import menu.*;
 import java.util.ArrayList;
 
 public record Restaurant(String restaurantName, Menu menu, ArrayList<Deliverer> deliverers) {
-    private double priceMultiplier = 1; // Regular price
     /**
      * @param time the order was registered
      * @return Current menu depending on the time & whether the order is dined in (OrderOption)
      */
     public Menu getCurrentMenu(int time, boolean dineIn) {
-        this.priceMultiplier = setPriceMultiplier(time);
-        this.priceMultipleir = setPriceMultiplier(dineIn);
+        double priceMultiplier = 1; // Regular price
+        priceMultiplier = setPriceMultiplier(time);
+        priceMultiplier = setPriceMultiplier(dineIn);
         // TODO: Additional price changes to be implemented by the restaurant
 
         ArrayList<MenuItem> menuItems = this.menu.copyOf().getMenuItems();
@@ -62,11 +62,22 @@ public record Restaurant(String restaurantName, Menu menu, ArrayList<Deliverer> 
      */
     public boolean deliver(boolean requiresDelivery) {
         if(requiresDelivery) {
+            prepareFood();
+            // Delivers after food has been finished preparing
             // TODO: Use Deliverer.java to see which deliverers are available & to allocate them to an order accordingly
             // Returns true if delivery is successful, false otherwise
+            return true;
         }
-        else
-            return false;
+        else {
+            // Does not require delivery, but returns true if food is successfully delivered to customer dining inside restaurant and false otherwise
+            return true;
+        }
     }
 
+    /**
+     * Preparing the food
+     */
+    public void prepareFood() {
+        // TODO: For restaurant to implement for preparing the food
+    }
 }
