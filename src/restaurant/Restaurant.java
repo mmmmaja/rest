@@ -1,10 +1,11 @@
 package restaurant;
 
+import delivery.Deliverer;
 import menu.*;
 import java.util.ArrayList;
 
 
-public record Restaurant(String restaurantName, Menu menu) {
+public record Restaurant(String restaurantName, Menu menu, ArrayList<Deliverer> deliverers) {
 
 
     /**
@@ -35,5 +36,11 @@ public record Restaurant(String restaurantName, Menu menu) {
     public String getRestaurantName() {
         return this.restaurantName;
     }
+
+    public ArrayList<Deliverer> getDeliverers() {
+        return this.deliverers;
+    }
+
+    public void deliver() {}
 
 }

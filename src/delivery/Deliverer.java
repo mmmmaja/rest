@@ -2,6 +2,7 @@ package delivery;
 
 /**
  * class representing an employee that delivers the food order in the restaurant
+ * we assumed that each deliverer works for the specific restaurant
  */
 public class Deliverer {
 
@@ -12,8 +13,7 @@ public class Deliverer {
     private boolean busy;
 
     /**
-     *
-     * @param delivererID unique String representing the delivered
+     * @param delivererID unique String representing the deliverer
      */
     public Deliverer(String delivererID) {
         this.delivererID = delivererID;

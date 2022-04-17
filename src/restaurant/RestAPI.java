@@ -28,19 +28,16 @@ public class RestAPI {
         return this.restaurant.getCurrentMenu(this.time);
     }
 
-    public Order getOrder() {
-        return this.order;
-    }
-
     public void addToOrder(String menuItemName) {
         this.order.addToOrder(menuItemName);
     }
 
     /**
-     * TODO
+     * @return order; the rest (i.e., payment details and delivery depends
+     * on implementation of external company)
      */
-    public boolean completeOrder() {
-        return false;
+    public Order completeOrder() {
+        return this.order;
     }
 
 

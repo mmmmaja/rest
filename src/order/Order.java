@@ -1,6 +1,5 @@
 package order;
 
-import order.OrderOption;
 import restaurant.*;
 import java.util.ArrayList;
 import menu.*;
@@ -11,34 +10,25 @@ import menu.*;
  */
 public class Order {
 
-    private final int hour;
+    private final int time;
     private final OrderOption orderOption;
-    private final ArrayList<MenuItem> orders;
+    private final ArrayList<MenuItem> menuItems;
     private final Menu currentMenu;
     private boolean paid;
-    private boolean toBeDelivered;
+
 
     /**
      * Order that customer places
-     * @param hour Time (integer hour) that customer places order
+     * @param time Time (integer hour) that customer places order
      * @param restaurant At which restaurant order is placed
      * @param orderOption Type of order (see enum OrderOption)
      */
-    public Order(int hour, Restaurant restaurant, OrderOption orderOption) {
-        this.hour = hour;
+    public Order(int time, Restaurant restaurant, OrderOption orderOption) {
+        this.time = time;
         this.orderOption = orderOption;
-        this.orders = new ArrayList<>();
-        this.currentMenu = restaurant.getCurrentMenu(this.hour);
+        this.menuItems = new ArrayList<>();
+        this.currentMenu = restaurant.getCurrentMenu(this.time);
         this.paid = false;
-    }
-
-    public OrderOption getOrderOption() {
-        return this.orderOption;
-    }
-
-
-    public int getHour() {
-        return hour;
     }
 
 
@@ -49,7 +39,7 @@ public class Order {
     public void addToOrder(String menuItemName) {
         for (MenuItem menuItem : this.currentMenu.getMenuItem()) {
             if (menuItem.getName().equals(menuItemName)) {
-                orders.add(menuItem);
+                menuItems.add(menuItem);
             }
         }
     }
@@ -58,7 +48,7 @@ public class Order {
      * @return all the items that this order includes
      */
     public ArrayList<MenuItem> getMenuItems() {
-        return this.orders;
+        return this.menuItems;
     }
 
     /**
@@ -73,7 +63,7 @@ public class Order {
      */
     public double getTotalPrice() {
         double total = 0;
-        for (MenuItem menuItem : orders) {
+        for (MenuItem menuItem : menuItems) {
             total += menuItem.getPrice();
         }
         return total;
@@ -81,11 +71,10 @@ public class Order {
 
     /**
      * asks the customer to make the payment
+     * method to be implemented
+     * should update the global boolean paid
      */
-    public void requestPayment() {
-        System.out.println("\nTo be paid: " + this.getTotalPrice());
-        this.paid = true;
-    }
+    public void requestPayment() {}
 
     /**
      * @return true if payment for the order was registered
@@ -95,19 +84,18 @@ public class Order {
     }
 
     /**
-     * @return true if order was processed successfully and delivery was registered
-     * and false if order was denied
+     * @return true if order was processed successfully order needs to be delivered
      */
-    public boolean toBeDelivered() {
+    public boolean requiresDelivery() {
+        return this.orderOption.equals(OrderOption.homeDelivery) && this.paid;
+    }
 
-        // payment for the order was not registered and order will be denied
-        if (!this.paid) {
-            return false;
-        }
+    public OrderOption getOrderOption() {
+        return this.orderOption;
+    }
 
-        // if delivery is required
-        return this.orderOption.equals(OrderOption.APIOrder) ||
-                this.orderOption.equals(OrderOption.homeDelivery);
+    public int getTime() {
+        return this.time;
     }
 
 }
