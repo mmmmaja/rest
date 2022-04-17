@@ -19,7 +19,7 @@ public class Main {
         Delivery delivery =  new Delivery(createDeliverers());
 
         // Adding new restaurant with menu
-        Restaurant restaurant = new Restaurant(RegisteredRestaurants.A, menu);
+        Restaurant restaurant = new Restaurant("A", menu);
 
         // Creating order scenario: dine-in, order in person at 10:00
         Order order = new Order(10, restaurant, OrderOption.dineInInPersonOrder);

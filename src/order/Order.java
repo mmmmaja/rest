@@ -28,7 +28,7 @@ public class Order {
         this.hour = hour;
         this.orderOption = orderOption;
         this.orders = new ArrayList<>();
-        this.currentMenu = restaurant.getCurrentMenu(this);
+        this.currentMenu = restaurant.getCurrentMenu(this.hour);
         this.paid = false;
     }
 
