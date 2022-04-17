@@ -1,4 +1,5 @@
 import menu.Menu;
+import menu.MenuItem;
 import order.*;
 import restaurant.Restaurant;
 
@@ -25,10 +26,10 @@ public class RestAPI {
     }
 
     /**
-     * @param menuItemName Adds menu item to order
+     * @param menuItem Adds menuItem to order
      */
-    public void addToOrder(String menuItemName) {
-        this.order.addToOrder(menuItemName);
+    public void addToOrder(MenuItem menuItem) {
+        this.order.addToOrder(menuItem);
     }
 
     /**

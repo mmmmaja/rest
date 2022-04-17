@@ -11,7 +11,7 @@ public record Restaurant(String restaurantName, Menu menu, ArrayList<Deliverer> 
     public Menu getCurrentMenu(int time) {
         double priceMultiplier = setPriceMultiplier(time);
 
-        ArrayList<MenuItem> menuItems = this.menu.copyOf().getMenuItem();
+        ArrayList<MenuItem> menuItems = this.menu.copyOf().getMenuItems();
         for (MenuItem menuItem : menuItems) {
             menuItem.setPrice(menuItem.getPrice() * priceMultiplier); // Changes price by multiplier
         }

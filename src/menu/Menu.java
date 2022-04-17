@@ -35,7 +35,7 @@ public class Menu {
      * Get list of menu items
      * @return
      */
-    public ArrayList<MenuItem> getMenuItem() {
+    public ArrayList<MenuItem> getMenuItems() {
         return this.menuItems;
     }
 

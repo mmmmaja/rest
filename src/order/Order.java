@@ -30,14 +30,10 @@ public class Order {
 
     /**
      * Adds the menuItem to the current order
-     * @param menuItemName name of the item
+     * @param menuItem to be added to the order
      */
-    public void addToOrder(String menuItemName) {
-        for (MenuItem menuItem : this.currentMenu.getMenuItem()) {
-            if (menuItem.getName().equals(menuItemName)) {
-                menuItems.add(menuItem);
-            }
-        }
+    public void addToOrder(MenuItem menuItem) {
+        menuItems.add(menuItem);
     }
 
     /**
