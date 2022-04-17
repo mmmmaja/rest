@@ -13,6 +13,7 @@ public class Order {
     private final ArrayList<MenuItem> menuItems;
     private final Menu currentMenu;
     private boolean paid;
+    private boolean dineIn;
 
     /**
      * Order that customer places
@@ -24,7 +25,11 @@ public class Order {
         this.time = time;
         this.orderOption = orderOption;
         this.menuItems = new ArrayList<>();
-        this.currentMenu = restaurant.getCurrentMenu(this.time);
+        if(orderOption == OrderOption.dineInInPersonOrder || orderOption = OrderOption.dineInOnlineOrder)
+            dineIn = true;
+        else
+            dineIn = false;
+        this.currentMenu = restaurant.getCurrentMenu(this.time, dineIn);
         this.paid = false;
     }
 
